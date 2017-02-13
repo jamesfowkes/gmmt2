@@ -1,0 +1,6 @@
+buses:
+    - {stop_id: 3300BR0307}
+    - {stop_id: 3300BR0270}
+
+trains:
+    - {station_code: BEE, calling_at: NOT}
