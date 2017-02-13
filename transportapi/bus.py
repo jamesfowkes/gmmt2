@@ -15,12 +15,16 @@ def get_live_json(atcocode, credentials):
 def flatten_services(json):
 	all_departures = []
 
-	for departures in json["departures"].values():
-		for departure in departures:
-			all_departures.append(departure)
+	try:
+		for departures in json["departures"].values():
+			for departure in departures:
+				all_departures.append(departure)
+
+	except:
+		pass
 
 	json["departures"] = all_departures
-
+	
 	return json
 	
 if __name__ == "__main__":
