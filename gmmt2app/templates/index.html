@@ -1,0 +1,28 @@
+{% extends "bootstrap/base.html" %}
+
+{% block styles %}
+{{super()}}
+<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<link rel="stylesheet" href="{{url_for('static', filename='basic.css')}}">
+
+{% endblock %}
+
+{% block title %} Get Me To Town {% endblock %}
+
+{% block content %}
+	
+	<div class="container-fluid">
+		<div class="row">
+			{% for journey in journeys %}
+				<div class="col-sm-6 text-center service_name">
+					<span class="service_name">{{ journey.service }}</span>
+				</div>
+				<div class="col-sm-6 text-center service_time">
+					<span class="service_time">{{ journey.mins_to_depart() }}</span>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+{% endblock %}

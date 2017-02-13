@@ -1,0 +1,7 @@
+html {
+	font-family: 'Comfortaa', cursive;
+}
+
+div.service_time, div.service_name{
+	padding: 2em;
+}
