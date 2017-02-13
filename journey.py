@@ -1,4 +1,6 @@
 import datetime
+import json
+
 from collections import namedtuple
 
 class Journey(namedtuple("Journey", ["service", "time"])):
@@ -16,6 +18,14 @@ class Journey(namedtuple("Journey", ["service", "time"])):
 		service = "Train"
 		time = datetime.datetime.strptime(json["aimed_departure_time"], "%H:%M").time()
 		return cls(service, time)
+
+	def json(self):
+		return json.dumps(
+			{
+				"service": self.service,
+				"time": self.time
+			}
+		)
 
 	def __str__(self):
 		return "{} at {:%H:%M}".format(self.service, self.time)
