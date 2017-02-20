@@ -1,7 +1,13 @@
-html {
+body {
 	font-family: 'Comfortaa', cursive;
+	font-size: 1.5em;
 }
 
 div.service_time, div.service_name{
 	padding: 2em;
+}
+
+div.row.odd
+{
+	background-color: #339999;
 }
