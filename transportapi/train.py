@@ -13,8 +13,9 @@ def get_timetable_json_now(station_code, credentials, params={}):
 	params.update(credentials)
 	return transportapi.request("/uk/train/station/{}/timetable.json".format(station_code), params)
 
-def get_live_json(station_code, credentials):
-	return transportapi.request("/uk/train/station/{}/live.json".format(station_code), credentials)
+def get_live_json(station_code, credentials, params={}):
+	params.update(credentials)
+	return transportapi.request("/uk/train/station/{}/live.json".format(station_code), params)
 
 if __name__ == "__main__":
 

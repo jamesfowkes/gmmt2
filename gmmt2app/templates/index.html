@@ -20,6 +20,9 @@
 				</div>
 				<div class="col-sm-6 text-center service_time">
 					<span class="service_time">{{ journey.mins_to_depart() }}</span>
+					{% if journey.is_late() %}
+					<span class="service_late">({{ journey.is_late() | int }} minutes late)</span>
+					{% endif %}
 				</div>
 			{% endfor %}
 		</div>
