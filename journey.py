@@ -44,7 +44,14 @@ class Journey(namedtuple("Journey", ["service", "expected", "actual"])):
 	def mins_to_depart(self, timenow=datetime.datetime.now()):
 		minutes = (self.actual - timenow).total_seconds()/60
 		return int(minutes + 0.5)
-	
+
+	def format_departure(self, switch_to_time_after_n_minutes):
+		mins_to_depart = self.mins_to_depart()
+		if mins_to_depart <= switch_to_time_after_n_minutes:
+			return "{:d}".format(mins_to_depart)
+		else:
+			return "{:%H:%M}".format(self.actual)
+
 	def is_late(self):
 		return (self.actual - self.expected).total_seconds()/60
 

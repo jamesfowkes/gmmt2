@@ -11,8 +11,6 @@ import yaml
 
 import flask
 
-from gmmt2 import journeymaker
-
 from gmmt2app import app
 
 if __name__ == "__main__":
@@ -30,8 +28,9 @@ if __name__ == "__main__":
 		{
 			"app_id": os.getenv("TRANSPORT_API_APP_ID"),
 			"app_key": os.getenv("TRANSPORT_API_APP_KEY")
-		},
-		"config": config
+		}
 	}
+
+	app.config["gmmt2"] = config
 
 	app.run()

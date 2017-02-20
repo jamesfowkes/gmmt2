@@ -10,7 +10,7 @@ import pprint
 
 import yaml
 
-import journeymaker
+import journey_factory
 
 if __name__ == "__main__":
 
@@ -26,7 +26,7 @@ if __name__ == "__main__":
 	with open(args["<config_file>"], 'r') as f:
 		config = yaml.load(f)
 
-	all_journeys = journeymaker.get_journeys(config, credentials)
+	all_journeys = journey_factory.get_journeys(config, credentials)
 
 	for j in all_journeys:
 		print(j)

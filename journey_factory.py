@@ -33,7 +33,7 @@ def get_train_journeys(config, credentials):
 def flatten(list_of_lists):
 	return [item for sublist in list_of_lists for item in sublist]
 
-def get_journeys(config, credentials, limit=None):
+def get_journeys(config, credentials, limit=None, discard_filter_time=0):
 
 	bus_journeys = flatten([get_bus_journeys(bus_cfg, credentials) for bus_cfg in config["buses"]])
 	train_journeys = flatten([get_train_journeys(train_cfg, credentials) for train_cfg in config["trains"]])
@@ -49,5 +49,8 @@ def get_journeys(config, credentials, limit=None):
 	
 	if limit:
 		all_journeys = all_journeys[0:limit]
+
+	if discard_filter_time > 0:
+		all_journeys = list(filter(lambda j: j.mins_to_depart() >= discard_filter_time, all_journeys))
 
 	return all_journeys
