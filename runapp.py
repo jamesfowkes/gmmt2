@@ -26,9 +26,9 @@ if __name__ == "__main__":
 	app.config["transport_api"] = {
 		"credentials":
 		{
-			"app_id": os.getenv("TRANSPORT_API_APP_ID"),
-			"app_key": os.getenv("TRANSPORT_API_APP_KEY")
-		}
+			"app_id": os.getenv("TRANSPORT_API_ID"),
+			"app_key": os.getenv("TRANSPORT_API_KEY")
+		},
 	}
 
 	app.config["gmmt2"] = config
