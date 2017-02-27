@@ -14,7 +14,7 @@ def get_bus_journeys(config, credentials):
 	try:
 		buses = [Journey.from_bus_json(json) for json in buses["departures"]]
 	except:
-		get_module_logger.warning("Exception parsing bus times JSON for {}".format(config["stop_id"]))
+		get_module_logger().warning("Exception parsing bus times JSON for {}".format(config["stop_id"]))
 		buses = []
 
 	return buses
@@ -25,7 +25,8 @@ def get_train_journeys(config, credentials):
 	try:
 		trains = [Journey.from_train_json(json) for json in trains["departures"]["all"]]
 	except:
-		get_module_logger.warning("Exception parsing train times JSON for {}".format(config["station_code"]))
+		get_module_logger().warning("Exception parsing train times JSON for {}".format(config["station_code"]))
+		get_module_logger().warning("JSON: {}".format(trains))
 		trains = []
 
 	return trains
