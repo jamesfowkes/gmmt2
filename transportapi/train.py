@@ -9,6 +9,9 @@ import logging
 
 import transportapi
 
+def get_module_logger():
+	return logging.getLogger()
+
 def get_timetable_json_now(station_code, credentials, params={}):
 	params.update(credentials)
 	return transportapi.request("/uk/train/station/{}/timetable.json".format(station_code), params)
@@ -34,12 +37,5 @@ if __name__ == "__main__":
 		params = {"calling_at":args["--dest"]}
 
 	json = (get_timetable_json_now(station_code, credentials, params))
-
-	#	destinations = args["--dest"]
-#
-	#	all_departures = json["departures"]["all"]
-	#	to_destination = filter(lambda d: d["destination_name"] in destinations, all_departures)
-	#	json["departures"]["all"] = list(to_destination)
-
 
 	pprint.pprint(json)
