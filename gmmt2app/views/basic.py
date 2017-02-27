@@ -1,7 +1,10 @@
 import logging
+import random
 
 from flask import render_template, current_app, jsonify
+
 from gmmt2 import journey_factory
+
 from gmmt2app.blueprints import basic_blueprint
 
 @basic_blueprint.route("/")
@@ -11,7 +14,9 @@ def render_index():
 	credentials = current_app.config["transport_api"]["credentials"]
 	journeys = journey_factory.get_journeys(config, credentials, 10, current_app.config["gmmt2"]["settings"]["discard_journeys_sooner_than"])
 
-	return render_template("index.html", journeys=journeys)
+	favicon = random.choice(['glyphicons-32-bus.png','glyphicons-15-train.png'])
+
+	return render_template("index.html", favicon=favicon, journeys=journeys)
 
 
 @basic_blueprint.route("/json")
