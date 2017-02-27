@@ -9,8 +9,9 @@ import logging
 
 import transportapi
 
-def get_live_json(atcocode, credentials):
-	return transportapi.request("/uk/bus/stop/{}/live.json".format(atcocode), credentials)
+def get_live_json(atcocode, credentials, params={}):
+	params.update(credentials)
+	return transportapi.request("/uk/bus/stop/{}/live.json".format(atcocode), params)
 
 def flatten_services(json):
 	all_departures = []
